@@ -22,18 +22,18 @@ def segmento_curva(tam, nivel):  # Funçao recursiva - SEGMENTO
     else:
         tam = tam/3.0  # novo tamanho do segemento
         segmento_curva(tam, nivel - 1)  # 1º terço do segmento
-        t.left(60)  # rotaciona
+        t.right(60)  # rotaciona
         segmento_curva(tam, nivel - 1)  # 2º terço do segmento
-        t.right(120)  # rotaciona
+        t.left(120)  # rotaciona
         segmento_curva(tam, nivel - 1)  # 3º terço do segmento
-        t.left(60)  # rotaciona
+        t.right(60)  # rotaciona
         segmento_curva(tam, nivel - 1)  # 4º terço do segmento
 
 
 def triangulo_equilatero(tam, nivel):  # Funçao que desenha o Triangulo
     for _ in range(3):
         segmento_curva(tam, nivel)
-        t.right(120)
+        t.left(120)
 
 
 def quant_niveis():
@@ -50,7 +50,7 @@ comprimento = 400
 
 # Posiçao da Turtle
 t.penup()  # retira caneta
-t.goto(-comprimento/2, comprimento/3)  # posiçao atual
+t.goto(-comprimento/2, -comprimento/3)  # posiçao atual
 t.pendown()  # coloca caneta
 
 # Configuração Tkinter
@@ -59,7 +59,7 @@ janela.title("FLOCO DE NEVE")
 janela.geometry("400x100+20+20")
 
 lblMsg = tk.Label(
-    janela, text="Informe a quantidade de niveis para o desenho floco de neve: ")
+    janela, text="Informe em qual nivel sera desenhado o floco de neve: ")
 lblMsg.pack()
 entrada = tk.Entry(janela)  # entrada de texto
 entrada.pack()
