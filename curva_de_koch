@@ -1,0 +1,57 @@
+import turtle
+# Configuração da Turtle
+t = turtle.Turtle()
+t.speed(0)  # velocidade da caneta
+t.pensize(2)  # grossura da caneta
+
+'''
+1º construir Triangulo Equilatero
+2º dividir cada lado em 3 partes iguais
+3º desenhar o triangulo em cada meio
+    medir o comprimento do terço medio para saber o novo valor do lados
+4º parte rercusiva 
+'''
+
+# Funçao recursiva - SEGMENTO
+def segmento_curva(tam, nivel):
+    # tamanho
+    if nivel == 0:
+        t.forward(tam)
+    else:
+        tam = tam/3.0
+        segmento_curva(tam, nivel - 1)
+        t.left(60)
+        segmento_curva(tam, nivel - 1)
+        t.right(120)
+        segmento_curva(tam, nivel - 1)
+        t.left(60)
+        segmento_curva(tam, nivel - 1)
+
+# Funçao que desenha o Triangulo
+def triangulo_equilatero(tam, nivel):
+
+    for _ in range(3):
+        segmento_curva(tam, nivel)
+        t.right(120)
+
+
+# definiçao dos valores
+comprimento = 400
+nivel = 3
+
+# Posiçao da Turtle
+t.penup()  # retira caneta
+t.goto(-comprimento/2, comprimento/3)  # posiçao atual
+t.pendown()  # coloca caneta
+
+
+# chamada da funcao para desenhar
+triangulo_equilatero(comprimento, nivel)
+
+turtle.mainloop()
+
+
+''' 
+REFERENCIA : https://acervolima.com/curva-de-koch-ou-floco-de-neve-de-koch/
+
+'''
