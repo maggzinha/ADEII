@@ -1,54 +1,74 @@
+import tkinter as tk
 import turtle
-# Configuração da Turtle
-t = turtle.Turtle()
-t.speed(0)  # velocidade da caneta
-t.pensize(2)  # grossura da caneta
 
 '''
 1º construir Triangulo Equilatero
 2º dividir cada lado em 3 partes iguais
 3º desenhar o triangulo em cada meio
     medir o comprimento do terço medio para saber o novo valor do lados
-4º parte rercusiva 
+4º parte rercusiva
 '''
 
-# Funçao recursiva - SEGMENTO
-def segmento_curva(tam, nivel):
-    # tamanho
-    if nivel == 0:
-        t.forward(tam)
+
+t = turtle.Turtle()  # Configuração da Turtle
+t.speed(0)  # velocidade da caneta
+t.pensize(2)  # grossura da caneta
+
+
+def segmento_curva(tam, nivel):  # Funçao recursiva - SEGMENTO
+    # caso base
+    if nivel == 1:
+        t.forward(tam)  # desenha o triangulo equilatero
     else:
-        tam = tam/3.0
-        segmento_curva(tam, nivel - 1)
-        t.left(60)
-        segmento_curva(tam, nivel - 1)
-        t.right(120)
-        segmento_curva(tam, nivel - 1)
-        t.left(60)
-        segmento_curva(tam, nivel - 1)
+        tam = tam/3.0  # novo tamanho do segemento
+        segmento_curva(tam, nivel - 1)  # 1º terço do segmento
+        t.left(60)  # rotaciona
+        segmento_curva(tam, nivel - 1)  # 2º terço do segmento
+        t.right(120)  # rotaciona
+        segmento_curva(tam, nivel - 1)  # 3º terço do segmento
+        t.left(60)  # rotaciona
+        segmento_curva(tam, nivel - 1)  # 4º terço do segmento
 
-# Funçao que desenha o Triangulo
-def triangulo_equilatero(tam, nivel):
 
+def triangulo_equilatero(tam, nivel):  # Funçao que desenha o Triangulo
     for _ in range(3):
         segmento_curva(tam, nivel)
         t.right(120)
 
 
-# definiçao dos valores
+def quant_niveis():
+    valor = int(entrada.get())
+    tam = 400
+    for _ in range(valor):
+        triangulo_equilatero(tam, valor)
+# get > obter valor atual do campo de entrada como uma string.
+# entrada > objeto do tipo Entry
+
+
+# tamanho
 comprimento = 400
-nivel = 3
 
 # Posiçao da Turtle
 t.penup()  # retira caneta
 t.goto(-comprimento/2, comprimento/3)  # posiçao atual
 t.pendown()  # coloca caneta
 
+# Configuração Tkinter
+janela = tk.Tk()  # metodo
+janela.title("FLOCO DE NEVE")
+janela.geometry("400x100+20+20")
 
-# chamada da funcao para desenhar
-triangulo_equilatero(comprimento, nivel)
+lblMsg = tk.Label(
+    janela, text="Informe a quantidade de niveis para o desenho floco de neve: ")
+lblMsg.pack()
+entrada = tk.Entry(janela)  # entrada de texto
+entrada.pack()
 
-turtle.mainloop()
+# Botao
+btn = tk.Button(janela, text="ENVIAR", command=quant_niveis)
+btn.pack()
+
+janela.mainloop()
 
 
 ''' 
