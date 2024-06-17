@@ -37,6 +37,7 @@ def triangulo_equilatero(tam, nivel):  # Funçao que desenha o Triangulo
 
 
 def quant_niveis():
+    t.reset()
     valor = int(entrada.get())
     tam = 400
     for _ in range(valor):
@@ -72,6 +73,7 @@ janela.mainloop()
 
 
 ''' 
-REFERENCIA : https://acervolima.com/curva-de-koch-ou-floco-de-neve-de-koch/
-
+REFERENCIA : 
+https://acervolima.com/curva-de-koch-ou-floco-de-neve-de-koch/
+https://docs.python.org/pt-br/3/library/turtle.html
 '''
