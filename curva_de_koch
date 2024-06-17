@@ -44,6 +44,7 @@ def quant_niveis():
         triangulo_equilatero(tam, valor)
 # get > obter valor atual do campo de entrada como uma string.
 # entrada > objeto do tipo Entry
+# int > converte a string para inteiro 
 
 
 # tamanho
