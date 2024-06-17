@@ -40,7 +40,7 @@ def quant_niveis():
     t.reset()
     valor = int(entrada.get())
     tam = 400
-    for _ in range(valor):
+    for _ in range(1):
         triangulo_equilatero(tam, valor)
 # get > obter valor atual do campo de entrada como uma string.
 # entrada > objeto do tipo Entry
