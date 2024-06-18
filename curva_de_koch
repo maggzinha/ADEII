@@ -11,7 +11,7 @@ import turtle
 
 
 t = turtle.Turtle()  # Configuração da Turtle
-t.speed(0)  # velocidade da caneta
+t.speed(3)  # velocidade da caneta
 t.pensize(2)  # grossura da caneta
 
 
@@ -37,23 +37,21 @@ def triangulo_equilatero(tam, nivel):  # Funçao que desenha o Triangulo
 
 
 def quant_niveis():
-    t.reset()
+    # tamanho
+    comprimento = 400
+
+    # Posiçao da Turtle
+    t.penup()  # retira caneta
+    t.goto(-comprimento/2, -comprimento/3)  # posiçao atual
+    t.pendown()  # coloca caneta
+    t.clear()
     valor = int(entrada.get())
-    tam = 400
     for _ in range(1):
-        triangulo_equilatero(tam, valor)
+        triangulo_equilatero(comprimento, valor)
+
 # get > obter valor atual do campo de entrada como uma string.
 # entrada > objeto do tipo Entry
-# int > converte a string para inteiro 
 
-
-# tamanho
-comprimento = 400
-
-# Posiçao da Turtle
-t.penup()  # retira caneta
-t.goto(-comprimento/2, -comprimento/3)  # posiçao atual
-t.pendown()  # coloca caneta
 
 # Configuração Tkinter
 janela = tk.Tk()  # metodo
@@ -74,7 +72,6 @@ janela.mainloop()
 
 
 ''' 
-REFERENCIA : 
-https://acervolima.com/curva-de-koch-ou-floco-de-neve-de-koch/
-https://docs.python.org/pt-br/3/library/turtle.html
+REFERENCIA : https://acervolima.com/curva-de-koch-ou-floco-de-neve-de-koch/
+
 '''
