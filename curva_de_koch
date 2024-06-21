@@ -1,3 +1,6 @@
+# Aluno: Lucas dos Santos Bezerra -
+# Aluna: Mággila Rayanne da Silva Holanda - 22354505
+
 import tkinter as tk
 import turtle
 
@@ -11,22 +14,27 @@ import turtle
 
 
 t = turtle.Turtle()  # Configuração da Turtle
-t.speed(3)  # velocidade da caneta
-t.pensize(2)  # grossura da caneta
+t.speed(0)  # velocidade da caneta
+t.pensize(2)  # Grossura da caneta
+
+
+screen = turtle.Screen()
+screen.setup(width=600, height=600)
+screen.title("Trabalho 1 - Algoritmo e Estrutura de DadosII")
 
 
 def segmento_curva(tam, nivel):  # Funçao recursiva - SEGMENTO
     # caso base
     if nivel == 1:
-        t.forward(tam)  # desenha o triangulo equilatero
+        t.forward(tam)  # Desenha o triangulo equilatero
     else:
-        tam = tam/3.0  # novo tamanho do segemento
+        tam = tam / 3.0  # Novo tamanho do segemento
         segmento_curva(tam, nivel - 1)  # 1º terço do segmento
-        t.right(60)  # rotaciona
+        t.right(60)  # Rotaciona
         segmento_curva(tam, nivel - 1)  # 2º terço do segmento
-        t.left(120)  # rotaciona
+        t.left(120)  # Rotaciona
         segmento_curva(tam, nivel - 1)  # 3º terço do segmento
-        t.right(60)  # rotaciona
+        t.right(60)  # Rotaciona
         segmento_curva(tam, nivel - 1)  # 4º terço do segmento
 
 
@@ -37,31 +45,34 @@ def triangulo_equilatero(tam, nivel):  # Funçao que desenha o Triangulo
 
 
 def quant_niveis():
-    # tamanho
-    comprimento = 400
+    t.reset()  # Limpa a tela e coloca a caneta na posiçao inicial para o novo desenho
+
+    comprimento = 400  # Tamanho
 
     # Posiçao da Turtle
     t.penup()  # retira caneta
-    t.goto(-comprimento/2, -comprimento/3)  # posiçao atual
-    t.pendown()  # coloca caneta
-    t.clear()
+    t.goto(-comprimento/2, -comprimento/3)  # Posiçao atual
+    t.pendown()  # Coloca caneta
+
+    # Define a cor da caneta para azul
+    t.pencolor("blue")
+
     valor = int(entrada.get())
     for _ in range(1):
         triangulo_equilatero(comprimento, valor)
-
 # get > obter valor atual do campo de entrada como uma string.
 # entrada > objeto do tipo Entry
 
 
 # Configuração Tkinter
-janela = tk.Tk()  # metodo
+janela = tk.Tk()
 janela.title("FLOCO DE NEVE")
-janela.geometry("400x100+20+20")
+janela.geometry("300x100+20+20")
 
 lblMsg = tk.Label(
-    janela, text="Informe em qual nivel sera desenhado o floco de neve: ")
+    janela, text="Informe em qual nível será desenhado o floco de neve")
 lblMsg.pack()
-entrada = tk.Entry(janela)  # entrada de texto
+entrada = tk.Entry(janela)  # Entrada de texto
 entrada.pack()
 
 # Botao
