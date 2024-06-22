@@ -1,26 +1,24 @@
-# Aluno: Lucas dos Santos Bezerra -
-# Aluna: Mággila Rayanne da Silva Holanda - 22354505
-
 import tkinter as tk
 import turtle
 
-'''
+
+''' 
 1º construir Triangulo Equilatero
 2º dividir cada lado em 3 partes iguais
 3º desenhar o triangulo em cada meio
-    medir o comprimento do terço medio para saber o novo valor do lados
+    - medir o comprimento do terço medio para saber o novo valor do lados
 4º parte rercusiva
 '''
 
 
 t = turtle.Turtle()  # Configuração da Turtle
-t.speed(0)  # velocidade da caneta
+t.speed(3)  # Velocidade da caneta
 t.pensize(2)  # Grossura da caneta
 
 
 screen = turtle.Screen()
 screen.setup(width=600, height=600)
-screen.title("Trabalho 1 - Algoritmo e Estrutura de DadosII")
+screen.title("Trabalho 1 - Algoritmo e Estrutura de Dados II")
 
 
 def segmento_curva(tam, nivel):  # Funçao recursiva - SEGMENTO
@@ -45,7 +43,7 @@ def triangulo_equilatero(tam, nivel):  # Funçao que desenha o Triangulo
 
 
 def quant_niveis():
-    t.reset()  # Limpa a tela e coloca a caneta na posiçao inicial para o novo desenho
+    t.reset()  # Limpa/reseta a tela e coloca a caneta na posiçao inicial para o novo desenho
 
     comprimento = 400  # Tamanho
 
@@ -54,35 +52,43 @@ def quant_niveis():
     t.goto(-comprimento/2, -comprimento/3)  # Posiçao atual
     t.pendown()  # Coloca caneta
 
-    # Define a cor da caneta para azul
-    t.pencolor("blue")
+    t.pencolor("blue")  # Define a cor da caneta para azul
 
-    valor = int(entrada.get())
-    for _ in range(1):
-        triangulo_equilatero(comprimento, valor)
-# get > obter valor atual do campo de entrada como uma string.
+    nivel = int(entrada.get())
+
+    # Chamada da funC que desenha o Triangulo
+    triangulo_equilatero(comprimento, nivel)
+
 # entrada > objeto do tipo Entry
+# get > obter valor atual do campo de entrada como uma string.
+# int > converte a string para um inteiro
 
 
 # Configuração Tkinter
 janela = tk.Tk()
 janela.title("FLOCO DE NEVE")
-janela.geometry("300x100+20+20")
+janela.geometry("300x80+20+20")  # Tamanho e posição da janela
 
+# Rotulo
 lblMsg = tk.Label(
     janela, text="Informe em qual nível será desenhado o floco de neve")
-lblMsg.pack()
-entrada = tk.Entry(janela)  # Entrada de texto
-entrada.pack()
+lblMsg.pack()  # Gerenciador de geometria
+
+# Entrada de dados
+entrada = tk.Entry(janela)
+entrada.pack()  # Gerenciador de geometria
 
 # Botao
 btn = tk.Button(janela, text="ENVIAR", command=quant_niveis)
-btn.pack()
+btn.pack()  # Gerenciador de geometria
 
 janela.mainloop()
 
 
 ''' 
-REFERENCIA : https://acervolima.com/curva-de-koch-ou-floco-de-neve-de-koch/
-
+REFERENCIAS
+https://acervolima.com/curva-de-koch-ou-floco-de-neve-de-koch/
+https://docs.python.org/pt-br/3/library/turtle.html#turtle-tutorial 
+https://youtu.be/IjouwdFwsg0?si=kjTJpf6KIEMGJ1wq
+https://dcc.ufrj.br/~fabiom/mab225/14gui.pdf
 '''
